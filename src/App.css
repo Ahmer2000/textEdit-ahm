@@ -36,3 +36,31 @@
     transform: rotate(360deg);
   }
 }
+.appDiv{
+  min-height: 100vh;
+}
+.formH{
+  font-weight: lighter;
+  font-size: xx-large;
+}
+.textS{
+  font-weight: 300;
+  font-size: xx-large;
+}
+#myBox{
+  resize:none;
+  /* overflow-x: hidden;
+  overflow-y: scroll;  */
+}
+.form-check-input:checked{
+  border: none;
+}
+.form-check-input:focus{
+  box-shadow: none;
+  border: none;
+}
+.form-control:focus{
+  transition: none;
+  box-shadow: none;
+  
+}

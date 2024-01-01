@@ -1,24 +1,62 @@
-import logo from './logo.svg';
+
+import Navbar from './components/Navbar';
+import Form from './components/Form';
 import './App.css';
+import { useState } from 'react';
+import Alert from './components/Alert';
+import About from './components/About';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
+  const [mode, setMode] = useState('light') // state syntax to let me know whether dark mode is enabled or not
+  const [btnText, setBtnText] = useState("Enable Dark Mode")
+  const [btnC, setBtnC] = useState('secondary')
+  const [alert, setAlert] = useState(null)
+
+  function showAlert(message,type) {
+    setAlert({
+      msg:message,
+      typ:type
+    })
+    setTimeout(()=>{
+      setAlert(null)} ,2000)
+  }
+  function toggleMode() {
+    if (mode === 'light') {
+      setMode('dark')
+      document.body.style.backgroundColor = 'rgb(59 65 71)';
+      document.getElementById('myBox').style.border = '2px solid rgb(33,37,41)'
+      setBtnText("Enable Light Mode")
+      setBtnC('dark')
+      showAlert("Dark Mode has been enabled","success")
+    } 
+    else{
+      setMode('light')
+      document.body.style.backgroundColor = '#e9ecef';
+      document.getElementById('myBox').style.border = '2px solid #6c757d'
+      setBtnText("Enable Dark Mode")
+      setBtnC('secondary')
+      showAlert("Light Mode has been enabled","success")
+    }
+      
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <div className='appDiv '>
+      
+          {/* <Navbar/> --> for setting default props */}
+          <Navbar title="TextEdit 1.0" mode={mode} toggleMode={toggleMode} btn={btnText}/> 
+          <Alert alert={alert}/>
+          <div className="container my-4">
+            <Routes>
+              <Route exact path="/about" element={<About />}></Route>
+                <Route exact path="/" element={<Form heading="Enter text below" mode={mode} btnC={btnC} showAlert={showAlert}/>}></Route>
+            </Routes>
+          </div>
+        </div>
+      </BrowserRouter>
+    </>
   );
 }
 
