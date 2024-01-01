@@ -36,9 +36,7 @@
     transform: rotate(360deg);
   }
 }
-.appDiv{
-  min-height: 100vh;
-}
+
 .formH{
   font-weight: lighter;
   font-size: xx-large;
@@ -62,5 +60,13 @@
 .form-control:focus{
   transition: none;
   box-shadow: none;
+  }
+  .accordion{
+    transition: none;
+    box-shadow: none;
+    --bs-accordion-btn-focus-box-shadow:none;
+  }
+ 
+
+ 
   
-}

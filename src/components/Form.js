@@ -26,6 +26,7 @@ const Form = (props) => {
     let textC = document.getElementById('myBox')
     textC.select()
     navigator.clipboard.writeText(textC.value) 
+    document.getSelection().removeAllRanges()
     props.showAlert('Text copied!','success')
 }
 const cutExtraSpace =()=>{
@@ -35,24 +36,24 @@ const cutExtraSpace =()=>{
 }
     return (
     <>
-    <div className="container">
-      <h1 className="formH" style={{color:props.mode==='light' ? 'black':'#fcf4f4c9'}}>{props.heading}</h1>
-      <div class=" mb-3 ">
-        <textarea class="form-control" style={{backgroundColor:props.mode==='light' ? 'white':'rgb(33,37,41)',
-         borderRadius: '5px' , border:props.mode , color:props.mode==='light' ? 'black':'#fcf4f4c9'}} value={text}  placeholder={props.place} onChange={handleChange} id="myBox" rows={7} ></textarea>
+    <div className="container ">
+      <h1 className="formH mb-1" style={{color:props.mode==='light' ? 'black':'#fcf4f4c9'}}>{props.heading}</h1>
+      <div className=" mb-1 ">
+        <textarea className="form-control" style={{backgroundColor:props.mode==='light' ? 'white':'rgb(33,37,41)',
+         borderRadius: '5px' , border:props.mode , color:props.mode==='light' ? 'black':'#fcf4f4c9'}} value={text}  placeholder={props.place} onChange={handleChange} id="myBox" rows={5} ></textarea>
       </div>
-      <button type="button" class={`btn btn-${props.btnC} mb-3`} onClick={changeToUp}>Convert to Uppercase</button>
-      <button type="button" class={`btn btn-${props.btnC} mb-3 mx-3`} onClick={changeToLow}>Convert to Lowercase</button>
-      <button type="button" class={`btn btn-${props.btnC} mb-3`} onClick={cutExtraSpace}>Remove Extra Space</button>
-      <button type="button" class={`btn btn-${props.btnC} mb-3 mx-3 `} onClick={copyT}>Copy Text</button>
-      <button type="button" class="btn btn-danger mb-3 " onClick={clearT}>Clear Text</button>
+      <button disabled={text.length===0} type="button" className={`btn btn-${props.btnC} my-1  mx-1`} onClick={changeToUp}>Convert to Uppercase</button>
+      <button disabled={text.length===0} type="button" className={`btn btn-${props.btnC} my-1  mx-1`} onClick={changeToLow}>Convert to Lowercase</button>
+      <button disabled={text.length===0} type="button" className={`btn btn-${props.btnC} my-1  mx-1`} onClick={cutExtraSpace}>Remove Extra Space</button>
+      <button disabled={text.length===0} type="button" className={`btn btn-${props.btnC} my-1  mx-1 `} onClick={copyT}>Copy Text</button>
+      <button disabled={text.length===0} type="button" className="btn btn-danger  my-1  mx-1" onClick={clearT}>Clear Text</button>
     </div>
-    <div className="container" style={{color:props.mode==='light' ? 'black':'#fcf4f4c9'}}>
-      <h1 className="textS mb-1">Your text summary</h1>
-      <p className="mb-0"><b>{text.split(" ").length-1}</b> word(s) and <b>{((text.trim(text)).length)} </b>character(s)</p>
-      <p className="mb-3 p-0"><b>{0.008 * (text.split(" ").length-1)}</b> minute(s) required for reading the above text</p>
-      <h2 className="formH mb-1">Preview of your text below</h2>
-      <p className="mb-2">{text.length>0?text:"Preview of your text..."}</p>
+    <div className="container my-2" style={{color:props.mode==='light' ? 'black':'#fcf4f4c9'}}>
+      <h1 className="textS mb-0">Your text summary</h1>
+      <p className="mb-0"><b>{text.split(" ").filter((element)=>{return element.length!==0}).length}</b> word(s) and <b>{text.length} </b>character(s)</p>
+      <p className="mb-2 p-0"><b>{0.008 * (text.split(" ").length-1)}</b> minute(s) required for reading the above text</p>
+      <h2 className="formH mb-0">Preview of your text below</h2>
+      <p className="mb-2 ">{text.length>0?text:"Nothing to preview!"}</p>
     </div>  
     </>
   
@@ -62,6 +63,6 @@ const cutExtraSpace =()=>{
 
 
 Form.defaultProps = {
-  place:"Enter Text..."
+  place:"",
 }
 export default Form;

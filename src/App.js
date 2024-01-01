@@ -13,6 +13,8 @@ function App() {
   const [btnC, setBtnC] = useState('secondary')
   const [alert, setAlert] = useState(null)
 
+  
+
   function showAlert(message,type) {
     setAlert({
       msg:message,
@@ -25,7 +27,9 @@ function App() {
     if (mode === 'light') {
       setMode('dark')
       document.body.style.backgroundColor = 'rgb(59 65 71)';
-      document.getElementById('myBox').style.border = '2px solid rgb(33,37,41)'
+      // document.getElementById('about').style.backgroundColor='rgb(59 65 71)'
+      // document.getElementsByClassName('accordion-button').style.color= 'white'
+      // document.body.txextArea.style.border = '2px solid rgb(33,37,41)'
       setBtnText("Enable Light Mode")
       setBtnC('dark')
       showAlert("Dark Mode has been enabled","success")
@@ -33,7 +37,9 @@ function App() {
     else{
       setMode('light')
       document.body.style.backgroundColor = '#e9ecef';
-      document.getElementById('myBox').style.border = '2px solid #6c757d'
+      // document.getElementById('about').style.backgroundColor='#e9ecef'
+      // document.getElementsByClassName('accordion-button').style.color= '#212529'
+      // document.body.textArea.style.border = '2px solid #6c757d'
       setBtnText("Enable Dark Mode")
       setBtnC('secondary')
       showAlert("Light Mode has been enabled","success")
@@ -43,14 +49,14 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <div className='appDiv '>
+        <div  >
       
           {/* <Navbar/> --> for setting default props */}
           <Navbar title="TextEdit 1.0" mode={mode} toggleMode={toggleMode} btn={btnText}/> 
           <Alert alert={alert}/>
           <div className="container my-4">
             <Routes>
-              <Route exact path="/about" element={<About />}></Route>
+              <Route exact path="/about" element={<About mode={mode}/>}></Route>
                 <Route exact path="/" element={<Form heading="Enter text below" mode={mode} btnC={btnC} showAlert={showAlert}/>}></Route>
             </Routes>
           </div>

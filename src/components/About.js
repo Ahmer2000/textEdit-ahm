@@ -1,35 +1,17 @@
-import React, {useState} from "react";
+import React /*{useState}*/ from "react";
 
-const About = () => {
-
-    const [myStyle, setStyle] = useState({
-        backgroundColor:"white",
-        color:"black"
-    })
+const About = (props) => {
+   
+  let myStyle = {
+    color:props.mode==='light'?'rgb(33,37,41)':'#fcf4f4c9',
+    backgroundColor:props.mode==='light'?'white':'rgb(33,37,41)'
+  }
     
-    const [btnText, setBtnText] = useState("Enable Dark Mode")
-    const toggleStyle = ()=>{
-        if (myStyle.color === "black") {
-             setStyle({
-                backgroundColor:"black",
-                color:"white"
-            })
-            setBtnText("Enable Light Mode")
-        }
-        else{
-            setStyle({
-                backgroundColor:"white",
-                color:"black"
-            })
-            setBtnText("Enable Dark Mode")
-        }
-    }
-
   return (
-    <div className="container" style={myStyle}>
-      <h2 className="my-3">About Us</h2>
+    <div className="container py-3 "  >
+      <h2 className="my-3 formH" style={{color:props.mode==='light'?'rgb(33,37,41)':'#fcf4f4c9'}}>About TextEdit 1.0</h2>
       <div className="accordion" id="accordionExample">
-        <div className="accordion-item" style={myStyle}>
+        <div className="accordion-item " style={myStyle}>
           <h2 className="accordion-header">
             <button
               className="accordion-button"
@@ -40,7 +22,7 @@ const About = () => {
               aria-controls="collapseOne"
               style={myStyle}
             >
-              Accordion Item #1
+              <strong>Analyze your text</strong>
             </button>
           </h2>
           <div
@@ -48,19 +30,12 @@ const About = () => {
             className="accordion-collapse collapse show"
             data-bs-parent="#accordionExample"
           >
-            <div className="accordion-body">
-              <strong>This is the first item's accordion body.</strong> It is
-              shown by default, until the collapse plugin adds the appropriate
-              classNamees that we use to style each element. These classNamees
-              control the overall appearance, as well as the showing and hiding
-              via CSS transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+            <div className="accordion-body" >
+              TextEdit 1.0 gives you a way to analyze your text quickly and efficiently. Be it word-count, character-count, time required to read your text and many more features are at your service in this text analyzing app. 
             </div>
           </div>
         </div>
-        <div className="accordion-item" style={myStyle}>
+        <div className="accordion-item " style={myStyle}>
           <h2 className="accordion-header">
             <button
               className="accordion-button collapsed"
@@ -71,7 +46,7 @@ const About = () => {
               aria-controls="collapseTwo"
               style={myStyle}
             >
-              Accordion Item #2
+              <strong>Free to use</strong>
             </button>
           </h2>
           <div
@@ -79,19 +54,12 @@ const About = () => {
             className="accordion-collapse collapse"
             data-bs-parent="#accordionExample"
           >
-            <div className="accordion-body">
-              <strong>This is the second item's accordion body.</strong> It is
-              hidden by default, until the collapse plugin adds the appropriate
-              classNamees that we use to style each element. These classNamees
-              control the overall appearance, as well as the showing and hiding
-              via CSS transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+            <div className="accordion-body" >
+              TextEdit 1.0 is a free character counter tool that provides instant character count and word count statistics for a given text. TextEdit 1.0 reports the number of words and characters. Thus it is suitable for writing text with word/character limit. 
             </div>
           </div>
         </div>
-        <div className="accordion-item" style={myStyle}>
+        <div className="accordion-item " style={myStyle}>
           <h2 className="accordion-header">
             <button
               className="accordion-button collapsed"
@@ -102,7 +70,7 @@ const About = () => {
               aria-controls="collapseThree"
               style={myStyle}
             >
-              Accordion Item #3
+              <strong>Browser compatible</strong>
             </button>
           </h2>
           <div
@@ -110,20 +78,12 @@ const About = () => {
             className="accordion-collapse collapse"
             data-bs-parent="#accordionExample"
           >
-            <div className="accordion-body">
-              <strong>This is the third item's accordion body.</strong> It is
-              hidden by default, until the collapse plugin adds the appropriate
-              classNamees that we use to style each element. These classNamees
-              control the overall appearance, as well as the showing and hiding
-              via CSS transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+            <div className="accordion-body" >
+              This word counter software works in any web browsers such as Chrome, Firefox, Internet Explorer, Safari, Opera. It can be used to count characters in facebook, blogs, books, excel documents, pdf documents, essays, etc.     
             </div>
           </div>
         </div>
       </div>
-      <button className="btn btn-secondary my-2" onClick={toggleStyle}>{btnText}</button>
     </div>
   );
 };
