@@ -4,7 +4,7 @@ const About = (props) => {
    
   let myStyle = {
     color:props.mode==='light'?'rgb(33,37,41)':'#fcf4f4c9',
-    backgroundColor:props.mode==='light'?'white':'rgb(33,37,41)'
+    backgroundColor:props.mode==='light'?'white':'#212529'
   }
     
   return (

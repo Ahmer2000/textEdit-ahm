@@ -66,6 +66,10 @@
     box-shadow: none;
     --bs-accordion-btn-focus-box-shadow:none;
   }
+.nav-link:hover{
+  font-weight: bolder;
+}
+
 
  
 
