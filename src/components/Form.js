@@ -36,7 +36,7 @@ const cutExtraSpace =()=>{
 }
     return (
     <>
-    <div className="container ">
+    <div className="container">
       <h1 className="formH mb-1" style={{color:props.mode==='light' ? 'black':'#fcf4f4c9'}}>{props.heading}</h1>
       <div className=" mb-1 ">
         <textarea className="form-control" style={{backgroundColor:props.mode==='light' ? 'white':'rgb(33,37,41)',
@@ -51,9 +51,9 @@ const cutExtraSpace =()=>{
     <div className="container my-2" style={{color:props.mode==='light' ? 'black':'#fcf4f4c9'}}>
       <h1 className="textS mb-0">Your text summary</h1>
       <p className="mb-0"><b>{text.split(" ").filter((element)=>{return element.length!==0}).length}</b> word(s) and <b>{text.length} </b>character(s)</p>
-      <p className="mb-2 p-0"><b>{0.008 * (text.split(" ").length-1)}</b> minute(s) required for reading the above text</p>
+      <p className="mb-2 "><b>{0.008 * (text.split(" ").length-1)}</b> minute(s) required for reading the above text</p>
       <h2 className="formH mb-0">Preview of your text below</h2>
-      <p className="mb-2 ">{text.length>0?text:"Nothing to preview!"}</p>
+      <p className="mb-2">{text.length>0?text:"Nothing to preview!"}</p>
     </div>  
     </>
   

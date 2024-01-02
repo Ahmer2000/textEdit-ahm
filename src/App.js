@@ -49,7 +49,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <div  >
+        <div >
       
           {/* <Navbar/> --> for setting default props */}
           <Navbar title="TextEdit 1.0" mode={mode} toggleMode={toggleMode} btn={btnText}/> 
