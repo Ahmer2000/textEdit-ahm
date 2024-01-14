@@ -54,7 +54,7 @@ function App() {
           {/* <Navbar/> --> for setting default props */}
           <Navbar title="TextEdit 1.0" mode={mode} toggleMode={toggleMode} btn={btnText}/> 
           <Alert alert={alert}/>
-          <div className="container my-4">
+          <div className="container  my-4">
             <Routes>
               <Route exact path="/about" element={<About mode={mode}/>}></Route>
                 <Route exact path="/" element={<Form heading="Enter text below" mode={mode} btnC={btnC} showAlert={showAlert}/>}></Route>
